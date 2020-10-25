@@ -1,0 +1,25 @@
+.leftsidebar__item_img_wrap {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.leftsidebar__item_img {
+  height: 40px;
+  width: 40px;
+  border-radius: 2rem;
+}
+
+.leftsidebar__item {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  margin-bottom: 5px;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 7px;
+}
+
+.leftsidebar__item:hover {
+  background: #e4e6e9;
+}

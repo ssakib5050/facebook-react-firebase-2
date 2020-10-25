@@ -2,3 +2,29 @@
   background: #f0f2f5;
   height: 100vh;
 }
+
+.home__mainContent {
+  display: flex;
+}
+
+.home__leftsidebar {
+  flex: 1;
+  position: fixed;
+  width: 300px;
+  height: calc(100vh - 55px);
+  overflow: auto;
+}
+.home__middlebar {
+  /* flex: 1; */
+  width: 600px;
+  margin: auto;
+  margin-top: 1rem;
+}
+.home__rightsidebar {
+  flex: 1;
+  position: fixed;
+  width: 300px;
+  right: 0;
+  height: calc(100vh - 55px);
+  overflow: auto;
+}
