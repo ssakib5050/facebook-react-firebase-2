@@ -6,7 +6,7 @@ import { Scrollbars } from "react-custom-scrollbars";
 import Navigation from "../Navigation/Navigation";
 import LeftSidebar from "../LeftSidebar/LeftSidebar";
 import RightSidebar from "../RightSidebar/RightSidebar";
-import Middlebar from "../RightSidebar/RightSidebar";
+import Middlebar from "../Middlebar/Middlebar";
 
 function Home() {
   return (

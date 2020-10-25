@@ -1,0 +1,39 @@
+.rightsidebar__item_wrap {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+
+  margin: 5px;
+  margin-bottom: 6px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.rightsidebar__item_wrap:hover {
+  background: #e4e6e9;
+}
+.rightsidebar__wrap_text {
+  color: #777;
+}
+
+.rightsidebar__img_wrap {
+  height: 35px;
+  width: 35px;
+  margin-right: 5px;
+  position: relative;
+}
+
+.rightsidebar__img {
+  height: 35px;
+  width: 35px;
+  border-radius: 2rem;
+}
+.rightsidebar__indicator {
+  position: absolute;
+  background: #00b894;
+  height: 12px;
+  width: 12px;
+  bottom: 0;
+  right: 0;
+  border-radius: 1rem;
+  border: 2px solid #f0f2f5;
+}
