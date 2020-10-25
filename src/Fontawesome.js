@@ -1,0 +1,35 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faHome,
+  faPhotoVideo,
+  faUsers,
+  faObjectGroup,
+  faPlus,
+  faEnvelope,
+  faBell,
+  faCaretDown,
+  faExclamationCircle,
+  faCog,
+  faQuestionCircle,
+  faMoon,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
+
+export {
+  FontAwesomeIcon,
+  faSearch,
+  faHome,
+  faPhotoVideo,
+  faUsers,
+  faObjectGroup,
+  faPlus,
+  faEnvelope,
+  faBell,
+  faCaretDown,
+  faExclamationCircle,
+  faCog,
+  faQuestionCircle,
+  faMoon,
+  faSignOutAlt,
+};

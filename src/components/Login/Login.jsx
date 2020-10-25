@@ -1,9 +1,43 @@
-// import React from 'react'
+import { useState } from "react";
 import "./Login.css";
 
+import { Button, Modal } from "react-bootstrap";
+
 function Login() {
+  const [signupModal, setSignupModal] = useState(false);
+  const modalClose = () => {
+    setSignupModal(false);
+  };
   return (
     <div className="login_wrap">
+      <Modal show={signupModal} onHide={modalClose} centered>
+        <Modal.Header closeButton>
+          {/* <Modal.Title>Modal heading</Modal.Title> */}
+          {/* <Modal.Title classNam="font-weight-bol">Signup</Modal.Title> */}
+          <h2 className="signup__modal_h2">Signup</h2>
+        </Modal.Header>
+        <Modal.Body>
+          <input
+            type="text"
+            className="form-control mb-2"
+            placeholder="Email Address"
+          />
+          <input
+            type="text"
+            className="form-control  mb-2"
+            placeholder="Password"
+          />
+          <input
+            type="submit"
+            className="signup__submit"
+            placeholder="Email Address"
+            value="Signup"
+            onClick={modalClose}
+          />
+        </Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal>
+
       <div className="login__bg">
         <div className="login__main container">
           <div className="login__brand d-none d-md-flex ">
