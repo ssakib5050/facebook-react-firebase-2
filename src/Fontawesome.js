@@ -14,7 +14,18 @@ import {
   faQuestionCircle,
   faMoon,
   faSignOutAlt,
+  faEllipsisH,
+  faSave,
+  faEyeSlash,
+  faClock,
+  faTimesCircle,
+  faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faThumbsUp,
+  faComment,
+  faShareSquare,
+} from "@fortawesome/free-regular-svg-icons";
 
 export {
   FontAwesomeIcon,
@@ -32,4 +43,13 @@ export {
   faQuestionCircle,
   faMoon,
   faSignOutAlt,
+  faEllipsisH,
+  faSave,
+  faEyeSlash,
+  faClock,
+  faTimesCircle,
+  faExclamationTriangle,
+  faThumbsUp,
+  faComment,
+  faShareSquare,
 };

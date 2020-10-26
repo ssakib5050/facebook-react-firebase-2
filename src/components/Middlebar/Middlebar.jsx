@@ -1,10 +1,12 @@
 import React from "react";
 import "./Middlebar.css";
 
+import Post from "../Post/Post";
+
 function Middlebar() {
   return (
     <div>
-      <div>Middlebar</div>
+      <Post />
     </div>
   );
 }
