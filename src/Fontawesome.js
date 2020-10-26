@@ -20,6 +20,8 @@ import {
   faClock,
   faTimesCircle,
   faExclamationTriangle,
+  faVideo,
+  faLaugh,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faThumbsUp,
@@ -52,4 +54,6 @@ export {
   faThumbsUp,
   faComment,
   faShareSquare,
+  faVideo,
+  faLaugh,
 };

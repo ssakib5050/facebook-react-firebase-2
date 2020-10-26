@@ -23,7 +23,7 @@ function Post() {
   const handleTextarea = (e) => {};
   return (
     <div className="post__wrap">
-      <div className="post__header dev">
+      <div className="post__header">
         <div className="post__img_wrap">
           <img
             src="https://via.placeholder.com/150"
@@ -31,7 +31,7 @@ function Post() {
             className="post__img"
           />
         </div>
-        <div className="post__name_timestamp dev">
+        <div className="post__name_timestamp ">
           <h6 className="post__postname">Rajib Khan</h6>
           <p className="post__posttimestamp">13h</p>
         </div>
@@ -41,7 +41,7 @@ function Post() {
               variant="success"
               className="post__moremenu_toggle"
             >
-              <div className="post__moremenu_icon_wrap dev">
+              <div className="post__moremenu_icon_wrap ">
                 <FontAwesomeIcon
                   icon={faEllipsisH}
                   className="post__moremenu_icon"

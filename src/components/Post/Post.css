@@ -17,7 +17,7 @@
 .post__header {
   display: flex;
   align-items: center;
-  padding: 5px;
+  padding: 10px;
 }
 
 .post__postname {
@@ -45,7 +45,7 @@
   background: #f2f2f2;
 }
 .post__main_text {
-  padding: 5px;
+  padding: 10px;
 }
 
 .post__main_img {
@@ -56,6 +56,7 @@
 .post__post_info {
   display: flex;
   justify-content: space-between;
+  padding: 0px 5px;
 }
 
 .post__moremenu_toggle {

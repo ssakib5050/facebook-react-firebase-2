@@ -39,7 +39,7 @@ function Navigation() {
           />
         </div>
       </div>
-      <div className="navigation__second">
+      <div className="navigation__second d-none d-xl-flex">
         <div className="navigation__icon_home  ">
           <FontAwesomeIcon
             icon={faHome}

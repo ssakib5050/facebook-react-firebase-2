@@ -14,15 +14,15 @@ function Home() {
       <Navigation />
 
       <div className="home__mainContent">
-        <div className="home__leftsidebar dev">
+        <div className="home__leftsidebar d-none d-xl-block ">
           <Scrollbars autoHide>
             <LeftSidebar />
           </Scrollbars>
         </div>
-        <div className="home__middlebar dev">
+        <div className="home__middlebar ">
           <Middlebar />
         </div>
-        <div className="home__rightsidebar dev">
+        <div className="home__rightsidebar d-none d-md-block ">
           <Scrollbars autoHide>
             <RightSidebar />
           </Scrollbars>

@@ -1,6 +1,7 @@
 .postcomment__wrapper {
   display: flex;
   margin-top: 1rem;
+  padding: 10px;
 }
 .postcomment__img_wrap {
   height: 35px;
@@ -45,4 +46,7 @@
 }
 .postcomment__main_timestamp {
   font-size: 12px;
+}
+.post__comment_input_wrap {
+  padding: 10px;
 }

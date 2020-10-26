@@ -27,3 +27,20 @@
   height: calc(100vh - 55px);
   overflow: auto;
 }
+@media only screen and (max-width: 1220px) {
+  .home__middlebar {
+    width: 500px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .home__middlebar {
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 320px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .home__middlebar {
+    margin-right: 20px;
+  }
+}

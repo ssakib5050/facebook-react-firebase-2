@@ -4,6 +4,7 @@
   display: flex;
   position: sticky;
   top: 0;
+  z-index: 999;
 }
 .navigation__first {
   flex: 1;
@@ -62,6 +63,7 @@
   border: none;
   background: transparent;
   margin-left: 5px;
+  outline: 0;
 }
 
 .navigation__icon_home {
