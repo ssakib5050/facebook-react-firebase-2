@@ -23,8 +23,43 @@ function Post({ post }) {
   const [textarea, setTextarea] = useState("");
   const [postReacted, setPostReacted] = useState("");
   const [comments, setComments] = useState([]);
-  const handleTextarea = (e) => {};
 
+  const handleTextarea = (e) => {
+    if (e.which === 13) {
+      if (textarea.length > 2) {
+        db.collection("posts")
+          .doc(post.id)
+          .collection("comments")
+          .add({
+            commentProfileImage: auth.currentUser.photoURL,
+            commentUsername: post.postUsername,
+            commentText: textarea,
+            commentTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            commentReactions: {
+              like: [],
+              love: [],
+              care: [],
+              haha: [],
+              wow: [],
+              sad: [],
+              angry: [],
+            },
+          });
+        setTextarea("");
+      }
+    }
+  };
+
+  useEffect(() => {
+    db.collection("posts")
+      .doc(post.id)
+      .collection("comments")
+      .onSnapshot((snapshot) =>
+        setComments(
+          snapshot.docs.map((doc) => ({ commentId: doc.id, ...doc.data() }))
+        )
+      );
+  }, []);
   useEffect(() => {
     const mainUsername = auth.currentUser.email;
     if (post.postReactions.like.find((like) => like === mainUsername)) {
@@ -222,7 +257,6 @@ function Post({ post }) {
             });
           break;
       }
-      console.log("Noo");
     }
 
     if (postReacted) {
@@ -704,11 +738,7 @@ function Post({ post }) {
     <div className="post__wrap">
       <div className="post__header">
         <div className="post__img_wrap">
-          <img
-            src="https://via.placeholder.com/150"
-            alt=""
-            className="post__img"
-          />
+          <img src={post.postProfileImage} alt="" className="post__img" />
         </div>
         <div className="post__name_timestamp ">
           <h6 className="post__postname">{post.postUsername}</h6>
@@ -807,7 +837,7 @@ function Post({ post }) {
         </div>
         <div className="post__post_comments_count">
           <button className="post__post_comments_count_button">
-            10 Comments
+            {/* 10 */}Comments
           </button>
         </div>
       </div>
@@ -878,7 +908,7 @@ function Post({ post }) {
       <div className="post__comment_input_wrap">
         <div className="post__comment_input_img_wrap">
           <img
-            src="https://via.placeholder.com/150"
+            src={auth.currentUser.photoURL}
             alt=""
             className="post__comment_input_img"
           />
@@ -886,16 +916,18 @@ function Post({ post }) {
         <div className="post__comment_textarea_wrap">
           <TextareaAutosize
             className="post__comment_textarea"
-            onChange={handleTextarea}
+            onChange={(e) => setTextarea(e.target.value)}
+            value={textarea}
+            // onKeyPress={handleTextarea}
+            onKeyUp={handleTextarea}
             placeholder="Write a comment..."
           />
         </div>
       </div>
-      <PostComment />
-      <PostComment />
-      <PostComment />
-      <PostComment />
-      <PostComment />
+
+      {comments.map((comment) => (
+        <PostComment key={comment.commentId} comment={comment} />
+      ))}
     </div>
   );
 }
