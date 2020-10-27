@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 
 import { Scrollbars } from "react-custom-scrollbars";

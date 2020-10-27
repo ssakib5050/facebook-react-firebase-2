@@ -2,7 +2,6 @@ import React from "react";
 import "./PostComment.css";
 
 function PostComment({ comment }) {
-  console.log(comment);
   return (
     <>
       <div className="postcomment__wrapper">

@@ -4,15 +4,17 @@ import "./Middlebar.css";
 import Post from "../Post/Post";
 import PostInput from "../PostInput/PostInput";
 
-import { auth, firebase, db, storage } from "../../firebase";
+import { db } from "../../firebase";
 
 function Middlebar() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) =>
-      setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
-    );
+    db.collection("posts")
+      .orderBy("postTimestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+      );
   }, []);
   return (
     <div>

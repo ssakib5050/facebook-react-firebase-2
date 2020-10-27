@@ -52,6 +52,7 @@ function SignupSetup() {
               })
               .catch(function (error) {
                 // An error happened.
+
                 setSetupError(error);
               });
           });
@@ -63,21 +64,6 @@ function SignupSetup() {
     }
     //
     //
-
-    user
-      .updateProfile({
-        displayName: name,
-        photoURL: "https://example.com/jane-q-user/profile.jpg",
-      })
-      .then(function () {
-        // Update successful.
-        history.push("/");
-      })
-      .catch(function (error) {
-        // An error happened.
-
-        setSetupError(error);
-      });
   };
   return (
     <div className="login_wrap">

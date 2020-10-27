@@ -14,7 +14,7 @@ import {
   faComment,
   faShareSquare,
 } from "../../Fontawesome";
-import { auth, firebase, db, storage } from "../../firebase";
+import { auth, firebase, db } from "../../firebase";
 import { Dropdown } from "react-bootstrap";
 import TextareaAutosize from "react-textarea-autosize";
 import PostComment from "../PostComment/PostComment";
@@ -59,7 +59,7 @@ function Post({ post }) {
           snapshot.docs.map((doc) => ({ commentId: doc.id, ...doc.data() }))
         )
       );
-  }, []);
+  }, [post.id]);
   useEffect(() => {
     const mainUsername = auth.currentUser.email;
     if (post.postReactions.like.find((like) => like === mainUsername)) {
@@ -256,6 +256,8 @@ function Post({ post }) {
               },
             });
           break;
+        default:
+        // "";
       }
     }
 
@@ -733,7 +735,6 @@ function Post({ post }) {
     }
   };
 
-  // console.log(post);
   return (
     <div className="post__wrap">
       <div className="post__header">
@@ -816,11 +817,11 @@ function Post({ post }) {
         </div>
       </div>
       <p className="post__main_text">{post.postText}</p>
-      <img
-        src="https://via.placeholder.com/150"
-        alt=""
-        className="post__main_img"
-      />
+
+      {post.postImage && (
+        <img src={post.postImage} alt="" className="post__main_img" />
+      )}
+
       <div className="post__post_info">
         <div className="post__post_info_reactions">
           {/* Reaction */}

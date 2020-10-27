@@ -30,7 +30,7 @@ function App() {
         history.push("/login");
       }
     });
-  }, []);
+  });
 
   return (
     <div className="App">

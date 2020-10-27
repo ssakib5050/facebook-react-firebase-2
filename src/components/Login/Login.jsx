@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
 
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { auth } from "../../firebase";
 
 function Login() {
@@ -112,7 +112,7 @@ function Login() {
                 className={`login__button  ${loginSubmitted && "active"}`}
                 onClick={loginHandle}
               />
-              <a href="#" className="login__reset">
+              <a href="/#" className="login__reset">
                 Forgotten password?
               </a>
               <hr className="login__hr" />

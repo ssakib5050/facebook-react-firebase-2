@@ -28,80 +28,83 @@ function PostInput() {
 
   const postInputhandle = () => {
     if (postModalInput) {
-      // Post Without Image
-      db.collection("posts")
-        .add({
-          postProfileImage: user.photoURL,
-          postUsername: user.displayName,
-          postTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          postText: postModalInput,
-          postImage: "",
+      if (postModalImage) {
+        // With Image
 
-          postReactions: {
-            like: [],
-            love: [],
-            care: [],
-            haha: [],
-            wow: [],
-            sad: [],
-            angry: [],
-          },
-        })
-        .then(() => {
-          setPostModalInput("");
-          modalClose();
-        });
-    }
+        if (imageFileTypeMatch(postModalImage.name)) {
+          const file = postModalImage;
 
-    if (postModalImage && postModalInput) {
-      // With Image
-      if (imageFileTypeMatch(postModalImage.name)) {
-        const file = postModalImage;
+          const uploadTask = storage
+            .ref()
+            .child(`images/${uuidv4()}.${postModalImage.name}`)
+            .put(file);
 
-        const uploadTask = storage
-          .ref()
-          .child(`images/${uuidv4()}.${postModalImage.name}`)
-          .put(file);
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              var progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log("Upload is " + progress + "% done");
 
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            var progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
+              // setPostProgress(progress + 1);
+            },
+            (error) => {
+              console.log(error);
+              // setPostTweeting(false);
+            },
+            () => {
+              uploadTask.snapshot.ref.getDownloadURL().then((downloadUrl) => {
+                console.log(downloadUrl);
 
-            // setPostProgress(progress + 1);
-          },
-          (error) => {
-            console.log(error);
-            // setPostTweeting(false);
-          },
-          () => {
-            uploadTask.snapshot.ref.getDownloadURL().then((downloadUrl) => {
-              console.log(downloadUrl);
+                setPostModalInput(null);
+                setPostModalImage(null);
+                db.collection("posts").add({
+                  postProfileImage: user.photoURL,
+                  postUsername: user.displayName,
+                  postTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                  postText: postModalInput,
+                  postImage: downloadUrl,
 
-              setPostModalInput(null);
-              setPostModalImage(null);
-              db.collection("posts").add({
-                postProfileImage: user.photoURL,
-                postUsername: user.displayName,
-                postTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                postText: postModalInput,
-                postImage: downloadUrl,
-
-                postReactions: {
-                  like: [],
-                  love: [],
-                  care: [],
-                  haha: [],
-                  wow: [],
-                  sad: [],
-                  angry: [],
-                },
+                  postReactions: {
+                    like: [],
+                    love: [],
+                    care: [],
+                    haha: [],
+                    wow: [],
+                    sad: [],
+                    angry: [],
+                  },
+                });
               });
-            });
-          }
-        );
+            }
+          );
+        }
+      } else {
+        // Without Image
+
+        db.collection("posts")
+          .add({
+            postProfileImage: user.photoURL,
+            postUsername: user.displayName,
+            postTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            postText: postModalInput,
+            postImage: "",
+
+            postReactions: {
+              like: [],
+              love: [],
+              care: [],
+              haha: [],
+              wow: [],
+              sad: [],
+              angry: [],
+            },
+          })
+          .then(() => {
+            setPostModalInput("");
+            setPostModalImage("");
+            modalClose();
+          });
       }
     }
   };
