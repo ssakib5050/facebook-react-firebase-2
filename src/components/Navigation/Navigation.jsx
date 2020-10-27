@@ -18,9 +18,12 @@ import {
   faMoon,
   faSignOutAlt,
 } from "../../Fontawesome";
+import { useHistory } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
+import { auth } from "../../firebase";
 
-function Navigation() {
+function Navigation({ user }) {
+  let history = useHistory();
   return (
     <div className="navigation__wrap">
       <div className="navigation__first">
@@ -67,12 +70,12 @@ function Navigation() {
         <div className="navigation__profile">
           <div className="navigation__profile_img_wrap">
             <img
-              src="https://via.placeholder.com/150"
+              src={user ? user.photoURL : "https://via.placeholder.com/150"}
               alt=""
               className="navigation__profile_img"
             />
           </div>
-          Opurbo
+          {user.displayName}
         </div>
         <div className="navigation__menu">
           <FontAwesomeIcon icon={faPlus} />
@@ -129,7 +132,13 @@ function Navigation() {
               Display preferences
             </div>
 
-            <div className="navigation__dropdown_item">
+            <div
+              className="navigation__dropdown_item"
+              onClick={() => {
+                auth.signOut();
+                history.push("/");
+              }}
+            >
               <FontAwesomeIcon
                 icon={faSignOutAlt}
                 className="navigation__dropdown_item_icon"

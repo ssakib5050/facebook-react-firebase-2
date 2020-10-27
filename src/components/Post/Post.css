@@ -2,6 +2,7 @@
   background: #fff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 5px;
+  margin-bottom: 1rem;
 }
 .post__img_wrap {
   height: 40px;
@@ -133,6 +134,11 @@
   margin-top: 5px;
   margin-bottom: 5px;
   position: relative;
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 1px;
 }
 .post__comment {
   flex: 1;
@@ -285,6 +291,17 @@
   background: transparent;
 }
 
+.reaction-angry img:hover,
+.reaction-care img:hover,
+.reaction-haha img:hover,
+.reaction-like img:hover,
+.reaction-love img:hover,
+.reaction-sad img:hover,
+.reaction-wow img:hover {
+  transform: scale(1.3) translateY(-5px);
+  transition: 0.1s ease;
+}
+
 .post__comment_input_img_wrap {
   height: 35px;
   width: 35px;
@@ -318,4 +335,32 @@
   border-radius: 1rem;
   padding: 2px 8px;
   font-size: 18px;
+}
+.reaction__span_text_like {
+  color: #2078f4;
+  font-weight: 600;
+}
+.reaction__span_text_love {
+  color: #f33e58;
+  font-weight: 600;
+}
+.reaction__span_text_care {
+  color: #f7b125;
+  font-weight: 600;
+}
+.reaction__span_text_haha {
+  color: #f7b125;
+  font-weight: 600;
+}
+.reaction__span_text_wow {
+  color: #f7b125;
+  font-weight: 600;
+}
+.reaction__span_text_sad {
+  color: #f7b125;
+  font-weight: 600;
+}
+.reaction__span_text_angry {
+  color: #e9714a;
+  font-weight: 600;
 }

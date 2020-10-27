@@ -2,6 +2,7 @@
   display: flex;
   margin-top: 1rem;
   padding: 10px;
+  padding-bottom: 0px;
 }
 .postcomment__img_wrap {
   height: 35px;
@@ -24,8 +25,7 @@
 }
 
 .postcomment__like_comment_wrap {
-  margin-left: 40px;
-  /* margin-top: 5px; */
+  margin-left: 55px;
 }
 .postcomment__main_like {
   border: none;

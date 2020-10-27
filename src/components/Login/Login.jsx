@@ -2,18 +2,56 @@ import { useState } from "react";
 import "./Login.css";
 
 import { Button, Modal } from "react-bootstrap";
+import { auth } from "../../firebase";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+
+  const [signupError, setSignupError] = useState("");
+  const [signupEmail, setSignupEmail] = useState("");
+  const [signupPassword, setSignupPassword] = useState("");
+
   const [signupModal, setSignupModal] = useState(false);
+  const [loginSubmitted, setLoginSubmitted] = useState("");
+  const [signupSubmitted, setSignupSubmitted] = useState(false);
+  const modalOpen = (e) => {
+    e.preventDefault();
+    setSignupModal(true);
+  };
+
   const modalClose = () => {
     setSignupModal(false);
+    setSignupError("");
+    setSignupEmail("");
+    setSignupPassword("");
+  };
+
+  const loginHandle = (e) => {
+    e.preventDefault();
+
+    setLoginSubmitted(true);
+
+    auth.signInWithEmailAndPassword(email, password).catch((error) => {
+      setLoginSubmitted(false);
+      setLoginError(error.message);
+    });
+  };
+
+  const signupHandle = () => {
+    setSignupSubmitted(true);
+    auth
+      .createUserWithEmailAndPassword(signupEmail, signupPassword)
+      .catch((error) => {
+        setSignupSubmitted(false);
+        setSignupError(error.message);
+      });
   };
   return (
     <div className="login_wrap">
       <Modal show={signupModal} onHide={modalClose} centered>
         <Modal.Header closeButton>
-          {/* <Modal.Title>Modal heading</Modal.Title> */}
-          {/* <Modal.Title classNam="font-weight-bol">Signup</Modal.Title> */}
           <h2 className="signup__modal_h2">Signup</h2>
         </Modal.Header>
         <Modal.Body>
@@ -21,18 +59,23 @@ function Login() {
             type="text"
             className="form-control mb-2"
             placeholder="Email Address"
+            onChange={(e) => setSignupEmail(e.target.value)}
+            value={signupEmail}
           />
           <input
-            type="text"
+            type="password"
             className="form-control  mb-2"
             placeholder="Password"
+            onChange={(e) => setSignupPassword(e.target.value)}
+            value={signupPassword}
           />
+          <p className="text-danger">{signupError}</p>
           <input
             type="submit"
-            className="signup__submit"
+            className={`signup__submit  ${signupSubmitted && "active"}`}
             placeholder="Email Address"
             value="Signup"
-            onClick={modalClose}
+            onClick={signupHandle}
           />
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
@@ -52,18 +95,30 @@ function Login() {
                 type="text"
                 placeholder="Email address or phone number"
                 className="login__email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
               <input
                 type="password"
                 placeholder="Password"
                 className="login__password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
               />
-              <input type="submit" value="Log In" className="login__button" />
+              <p className="text-danger">{loginError}</p>
+              <input
+                type="submit"
+                value="Log In"
+                className={`login__button  ${loginSubmitted && "active"}`}
+                onClick={loginHandle}
+              />
               <a href="#" className="login__reset">
                 Forgotten password?
               </a>
               <hr className="login__hr" />
-              <button className="login__create">Create New Account</button>
+              <button className="login__create" onClick={modalOpen}>
+                Create New Account
+              </button>
             </form>
             <p>Create a Page for a celebrity, band or business.</p>
           </div>

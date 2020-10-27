@@ -8,15 +8,15 @@ import LeftSidebar from "../LeftSidebar/LeftSidebar";
 import RightSidebar from "../RightSidebar/RightSidebar";
 import Middlebar from "../Middlebar/Middlebar";
 
-function Home() {
+function Home({ user }) {
   return (
     <div className="Home">
-      <Navigation />
+      <Navigation user={user} />
 
       <div className="home__mainContent">
         <div className="home__leftsidebar d-none d-xl-block ">
           <Scrollbars autoHide>
-            <LeftSidebar />
+            <LeftSidebar user={user} />
           </Scrollbars>
         </div>
         <div className="home__middlebar ">

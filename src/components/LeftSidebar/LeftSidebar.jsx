@@ -1,13 +1,13 @@
 import React from "react";
 import "./LeftSidebar.css";
 
-function LeftSidebar() {
+function LeftSidebar({ user }) {
   return (
     <div className="leftsidebar__wrap">
       <div className="leftsidebar__container">
         <LeftSidebarItem
-          img="https://via.placeholder.com/150"
-          title="Rajib Khan"
+          img={user ? user.photoURL : "https://via.placeholder.com/150"}
+          title={user.displayName}
         />
         <LeftSidebarItem
           img="https://cdn4.iconfinder.com/data/icons/materia-flat-human-vol-1/24/013_048_collective_group_friends_people-256.png"

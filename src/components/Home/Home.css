@@ -1,9 +1,9 @@
 .Home {
-  background: #f0f2f5;
 }
 
 .home__mainContent {
   display: flex;
+  background: #f0f2f5;
 }
 
 .home__leftsidebar {
